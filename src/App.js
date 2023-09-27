@@ -41,7 +41,7 @@ const App = (props) => {
     .catch(err => console.error(err));
   };
 
-  const AddMovieForm = (movie => {
+  const addMovie = (movie => {
     axios.post('http://localhost:9000/api/movies', movie)
     .then(res => {
       setMovies(res.data);
@@ -53,7 +53,11 @@ const App = (props) => {
   const addToFavorites = (movie) => {
     setFavoriteMovies([...favoriteMovies, movie]);
 
-  };
+  }
+
+  const removeFavorites = (id) => {
+    setFavoriteMovies(favoriteMovies.filter(movie => movie.id !== id));
+  }
 
   return (
     <div>
