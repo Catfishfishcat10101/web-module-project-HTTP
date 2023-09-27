@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const EditMovieForm = (props) => {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const { setMovies } = props;
   const [movie, setMovie] = useState({
@@ -15,6 +16,21 @@ const EditMovieForm = (props) => {
     metascore: 0,
     description: ""
   });
+
+  useEffect(() => {
+    const fetchMovieData = async () => {
+      try {
+        const response = await axios.get();
+        setMovie(response.data);
+      } catch (error) {
+        console.error("Error fetching the movie", error);
+      }
+    };
+
+    fetchMovieData();
+  }, [id]);
+
+  
 
   const handleChange = (e) => {
     setMovie({

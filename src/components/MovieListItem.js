@@ -17,4 +17,6 @@ const MovieListItem = (props) => {
   </tr>);
 }
 
+<button onClick={() => handleDelete(movie.id)}>Delete</button>
+
 export default MovieListItem;
